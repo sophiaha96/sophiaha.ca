@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import * as types from 'lib/types'
 import * as config from 'lib/config'
-import { getSocialImageUrl } from 'lib/get-social-image-url'
 
 export const PageHead: React.FC<
   types.PageProps & {
@@ -12,13 +11,11 @@ export const PageHead: React.FC<
     image?: string
     url?: string
   }
-> = ({ site, title, description, pageId, image, url }) => {
+> = ({ site, title, description, url }) => {
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
   description = description ?? site?.description
-
-  const socialImageUrl = getSocialImageUrl(pageId) || image
 
   return (
     <Head>
@@ -35,37 +32,20 @@ export const PageHead: React.FC<
       {site && (
         <>
           <meta property='og:site_name' content={site.name} />
-          <meta property='twitter:domain' content={site.domain} />
         </>
-      )}
-
-      {config.twitter && (
-        <meta name='twitter:creator' content={`@${config.twitter}`} />
       )}
 
       {description && (
         <>
           <meta name='description' content={description} />
           <meta property='og:description' content={description} />
-          <meta name='twitter:description' content={description} />
         </>
-      )}
-
-      {socialImageUrl ? (
-        <>
-          <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:image' content={socialImageUrl} />
-          <meta property='og:image' content={socialImageUrl} />
-        </>
-      ) : (
-        <meta name='twitter:card' content='summary' />
       )}
 
       {url && (
         <>
           <link rel='canonical' href={url} />
           <meta property='og:url' content={url} />
-          <meta property='twitter:url' content={url} />
         </>
       )}
 
@@ -77,7 +57,6 @@ export const PageHead: React.FC<
       />
 
       <meta property='og:title' content={title} />
-      <meta name='twitter:title' content={title} />
       <title>{title}</title>
     </Head>
   )
