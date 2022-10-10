@@ -1,14 +1,15 @@
-import Keyv from '@keyvhq/core'
-import KeyvRedis from '@keyvhq/redis'
+import Keyv from '@keyvhq/core';
+import KeyvRedis from '@keyvhq/redis';
 
-import { isRedisEnabled, redisUrl, redisNamespace } from './config'
+import { isRedisEnabled, redisUrl, redisNamespace } from './config';
 
-let db: Keyv
+let db: Keyv;
 if (isRedisEnabled) {
-  const keyvRedis = new KeyvRedis(redisUrl)
-  db = new Keyv({ store: keyvRedis, namespace: redisNamespace || undefined })
+  console.log('\n\nREDIS URL:', redisUrl, '\n');
+  const keyvRedis = new KeyvRedis(redisUrl);
+  db = new Keyv({ store: keyvRedis, namespace: redisNamespace || undefined });
 } else {
-  db = new Keyv()
+  db = new Keyv();
 }
 
-export { db }
+export { db };
