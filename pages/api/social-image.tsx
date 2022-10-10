@@ -14,6 +14,8 @@ import { notion } from 'lib/notion-api'
 import { mapImageUrl } from 'lib/map-image-url'
 import { interRegular } from 'lib/fonts'
 import * as config from 'lib/config'
+import Image from 'next/image'
+import Head from 'next/head'
 
 /**
  * Social image generation via headless chrome.
@@ -98,9 +100,9 @@ export default withOGImage<'query', 'id'>({
 
       return (
         <html>
-          <head>
+          <Head>
             <style dangerouslySetInnerHTML={{ __html: style }} />
-          </head>
+          </Head>
 
           <body>
             <div className='container'>
@@ -128,7 +130,7 @@ export default withOGImage<'query', 'id'>({
                 </div>
 
                 {image && (
-                  <img
+                  <Image
                     src={image}
                     className='rhs'
                     style={{

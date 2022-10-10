@@ -153,22 +153,6 @@ This table of contents uses the same logic that Notion uses for its built-in Tab
 
 All pages are designed to be responsive across common device sizes.
 
-## Analytics
-
-Analytics are an optional feature that are easy to enable if you want.
-
-### Fathom Analytics
-
-[Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
-
-To enable, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will only be used in production.
-
-### PostHog Analytics
-
-[PostHog](https://posthog.com/) provides a lightweight, **open source** alternative to Google Analytics.
-
-To enable, just add a `NEXT_PUBLIC_POSTHOG_ID` environment variable, which will only be used in production.
-
 ## Environment Variables
 
 If you're using Redis, analytics, or any other feature which requires environment variables, then you'll need to [add them to your Vercel project](https://vercel.com/docs/concepts/projects/environment-variables).
