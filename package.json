@@ -6,7 +6,7 @@
   "repository": "sophiaha96/sophiaha.ca",
   "license": "MIT",
   "engines": {
-    "node": ">=18.10.0"
+    "node": ">=16.17.1"
   },
   "scripts": {
     "dev": "next dev",
