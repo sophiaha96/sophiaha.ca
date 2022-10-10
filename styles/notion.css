@@ -50,6 +50,10 @@
   margin-bottom: 1em;
 }
 
+.notion-asset-wrapper-image {
+  min-height: 100%;
+}
+
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
