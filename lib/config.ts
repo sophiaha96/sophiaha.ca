@@ -4,16 +4,17 @@
  * This file pulls from the root "site.config.ts" as well as environment variables
  * for optional depenencies.
  */
+import { parsePageId } from 'notion-utils'
 
-import { parsePageId } from 'notion-utils';
-import { getEnv, getSiteConfig } from './get-config-value';
-import { NavigationLink } from './site-config';
+import { getEnv, getSiteConfig } from './get-config-value'
+import { NavigationLink } from './site-config'
 import {
+  NavigationStyle,
   PageUrlOverridesInverseMap,
   PageUrlOverridesMap,
-  NavigationStyle,
-  Site,
-} from './types';
+  Site
+} from './types'
+import { PostHogConfig } from 'posthog-js';
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
@@ -53,12 +54,14 @@ export const description: string = getSiteConfig('description', 'Notion Blog');
 export const language: string = getSiteConfig('language', 'en');
 
 // social accounts
+export const twitter: string | null = getSiteConfig('twitter', null)
+export const mastodon: string | null = getSiteConfig('mastodon', null)
 export const instagram: string | null = getSiteConfig('instagram', null);
-export const github: string | null = getSiteConfig('github', null);
-export const youtube: string | null = getSiteConfig('youtube', null);
-export const linkedin: string | null = getSiteConfig('linkedin', null);
-export const newsletter: string | null = getSiteConfig('newsletter', null);
-export const zhihu: string | null = getSiteConfig('zhihu', null);
+export const github: string | null = getSiteConfig('github', null)
+export const youtube: string | null = getSiteConfig('youtube', null)
+export const linkedin: string | null = getSiteConfig('linkedin', null)
+export const newsletter: string | null = getSiteConfig('newsletter', null)
+export const zhihu: string | null = getSiteConfig('zhihu', null)
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon: string | null = getSiteConfig(
@@ -97,7 +100,7 @@ export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
 );
 
 // Optional site search
-export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true);
+export const isSearchEnabled: boolean = false;/* getSiteConfig('isSearchEnabled', true); */
 
 // ----------------------------------------------------------------------------
 
@@ -123,15 +126,19 @@ export const redisNamespace: string | null = getEnv(
 
 export const isServer = typeof window === 'undefined';
 
-export const port = getEnv('PORT', '3000');
-export const host = isDev ? `http://localhost:${port}` : `https://${domain}`;
+export const port = getEnv('PORT', '3000')
+export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
+export const apiHost = isDev
+  ? host
+  : `https://${process.env.VERCEL_URL || domain}`
 
 export const apiBaseUrl = `/api`;
 
 export const api = {
   searchNotion: `${apiBaseUrl}/search-notion`,
-  getSocialImage: `${apiBaseUrl}/social-image`,
-};
+  getNotionPageInfo: `${apiBaseUrl}/notion-page-info`,
+  getSocialImage: `${apiBaseUrl}/social-image`
+}
 
 // ----------------------------------------------------------------------------
 
@@ -140,8 +147,20 @@ export const site: Site = {
   name,
   rootNotionPageId,
   rootNotionSpaceId,
-  description,
-};
+  description
+}
+
+export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
+export const fathomConfig = fathomId
+  ? {
+      excludedDomains: ['localhost', 'localhost:3000']
+    }
+  : undefined
+
+export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
+export const posthogConfig: Partial<PostHogConfig> = {
+  api_host: 'https://app.posthog.com'
+}
 
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,

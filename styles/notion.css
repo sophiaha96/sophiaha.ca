@@ -18,6 +18,10 @@
   --notion-header-height: 40px;
 }
 
+.notion-frame {
+  padding: 0;
+}
+
 .notion-page {
   padding-bottom: calc(max(3vh, 32px)) !important;
   line-height: 1.65;
@@ -37,7 +41,7 @@
 
 .notion-text {
   font-family: Sorts Mill Goudy, serif;
-  font-size: 20px;
+  font-size: 17px;
   padding: 0.5em 2px;
 }
 
@@ -327,7 +331,6 @@
   background-repeat: no-repeat;
   background-position: 50% 100%;
   background-size: 0 0.1rem;
-  float: right;
 }
 
 .notion-link:focus,

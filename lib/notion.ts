@@ -1,15 +1,17 @@
-import pMap from 'p-map'
-import pMemoize from 'p-memoize'
 import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
 import { mergeRecordMaps } from 'notion-utils'
+import pMap from 'p-map'
+import pMemoize from 'p-memoize'
 
-import { notion } from './notion-api'
-import { getPreviewImageMap } from './preview-images'
 import {
   isPreviewImageSupportEnabled,
-  navigationStyle,
-  navigationLinks
+  navigationLinks,
+  navigationStyle
 } from './config'
+import { notion } from './notion-api'
+import { getPreviewImageMap } from './preview-images'
+// import { existsSync, mkdirSync, readdirSync } from 'node:fs';
+// import { join } from 'node:path';
 
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
@@ -39,6 +41,19 @@ const getNavigationLinkPages = pMemoize(
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notion.getPage(pageId)
+  // const { signed_urls } = recordMap
+
+  // if(Object.keys(signed_urls).length > 0) {
+  //   const path = join(__dirname, '../../../images')
+  //   const images = readdirSync(path)
+
+  //   for(const image of images) {
+  //     if (image === '.DS_Store') continue
+      
+  //     const blockId = image.replaceAll('\.', '').replace('png', '')
+  //     if (Object.hasOwn(recordMap.signed_urls, blockId)) recordMap.signed_urls[blockId] = `./images/${blockId}.png`
+  //   }
+  // }
 
   if (navigationStyle !== 'default') {
     // ensure that any pages linked to in the custom navigation header have

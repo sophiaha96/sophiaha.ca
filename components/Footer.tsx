@@ -2,7 +2,7 @@ import * as React from 'react'
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 
 import * as config from 'lib/config'
@@ -12,9 +12,10 @@ import styles from './styles.module.css'
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export const FooterImpl: React.FC = () => {
+  const year = new Date().getFullYear()
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>© {config.author} 2022</div>
+      <div className={styles.copyright}>© {config.author}, {year}</div>
 
 
       <div className={styles.social}>
@@ -54,7 +55,7 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
 
-        {config.newsletter && (
+        {/* {config.newsletter && (
           <a
             className={styles.newsletter}
             href={`${config.newsletter}`}
@@ -64,7 +65,7 @@ export const FooterImpl: React.FC = () => {
           >
             <FaEnvelopeOpenText />
           </a>
-        )}
+        )} */}
 
         {config.youtube && (
           <a

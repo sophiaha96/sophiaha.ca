@@ -1,13 +1,21 @@
 import got from 'got'
 import lqip from 'lqip-modern'
-import pMap from 'p-map'
-import pMemoize from 'p-memoize'
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
 import { getPageImageUrls, normalizeUrl } from 'notion-utils'
+import pMap from 'p-map'
+import pMemoize from 'p-memoize'
 
-import { defaultPageIcon, defaultPageCover } from './config'
+import { defaultPageCover, defaultPageIcon } from './config'
 import { db } from './db'
 import { mapImageUrl } from './map-image-url'
+
+// import { access, createWriteStream, existsSync } from 'fs';
+// import { resolve } from 'node:path';
+// import { mkdir } from 'node:fs/promises';
+// import { finished } from 'stream/promises';
+// import { Readable } from 'stream';
+// import { ReadableStream } from 'stream/web';
+// import { createHash } from 'crypto';
 
 export async function getPreviewImageMap(
   recordMap: ExtendedRecordMap
@@ -51,6 +59,18 @@ async function createPreviewImage(
 
     const { body } = await got(url, { responseType: 'buffer' })
     const result = await lqip(body)
+
+    // if (!existsSync('images')) await mkdir('images');
+
+    // const image = await fetch(url);
+    // const hash = createHash("md5").update(image.body.toString()).digest("hex");
+    // const destination = `images/${hash}.png`;
+
+    // if(existsSync(destination)) return null;
+
+    // const fileStream = createWriteStream(destination, { flags: 'wx' });
+    // await finished(Readable.fromWeb(image.body as unknown as ReadableStream).pipe(fileStream));
+
     console.log('lqip', { ...result.metadata, url, cacheKey })
 
     const previewImage = {

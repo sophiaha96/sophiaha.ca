@@ -1,10 +1,8 @@
 import * as React from 'react'
-import cs from 'classnames'
-import { Header, Breadcrumbs, Search, useNotionContext } from 'react-notion-x'
 import * as types from 'notion-types'
-
-import { navigationStyle, navigationLinks, isSearchEnabled } from 'lib/config'
-
+import cs from 'classnames'
+import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import styles from './styles.module.css'
 
 
