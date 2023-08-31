@@ -61,6 +61,7 @@
 
 .settings,
 .social {
+  display: none;
   user-select: none;
 }
 
@@ -94,6 +95,10 @@
 
 .mastodon:hover {
   color: #696969;
+}
+
+.mastodon:hover {
+  color: #5a4be1;
 }
 
 .zhihu:hover {

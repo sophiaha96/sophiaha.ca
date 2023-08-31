@@ -22,6 +22,10 @@
   padding: 0;
 }
 
+.notion-frame {
+  padding: 0;
+}
+
 .notion-page {
   padding-bottom: calc(max(3vh, 32px)) !important;
   line-height: 1.65;
@@ -36,7 +40,7 @@
 }
 
 .notion-collection-header-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .notion-text {
@@ -65,7 +69,7 @@
 
 .notion-header .notion-nav-header {
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 0 0;
 }
 
 .notion-gallery-grid {
@@ -112,7 +116,7 @@
 }
 
 .notion-collection-card-cover {
-  border-radius: 16px;
+  /* border-radius: 16px; */
   /* box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1); */
   overflow: visible;
 }
@@ -173,7 +177,7 @@
   }
   .notion-collection-card-cover img {
     height: 7vmax;
-    border-radius: 24px;
+    /* border-radius: 24px; */
   }
   .notion-title {
     font-size: 2rem;
@@ -213,6 +217,11 @@
     font-size: 15px;
     border-left: 4px solid #202020;
   }
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img {
+    /* border-radius: 24px; */
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -242,6 +251,11 @@
     font-style: bold;
     font-size: 15px;
     border-left: 4px solid #202020;
+  }
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img {
+    border-radius: 24px;
   }
 }
 
@@ -274,7 +288,7 @@
 }
 
 .notion-page-has-cover {
-  padding: 2rem;
+  padding: 0rem;
 }
 
 .notion-page-has-cover.notion-page-no-icon {
@@ -283,28 +297,30 @@
 
 .notion-page-cover {
   display: none;
+  position: relative;
+  top: 0px;
   max-width: 900px;
-  border-radius: 40px;
+  /* border-radius: 40px; */
   box-shadow: 2px 2px 8px 4px rgba(61, 14, 14, 0.3);
 }
 .notion-page-cover-wrapper,
 .notion-page-cover-wrapper span,
 .notion-page-cover-wrapper img {
-  margin-top: 0.5rem 0;
-  border-radius: 24px;
+  /* padding: 5rem 5rem 5rem 5rem; */
+  /* border-radius: 24px; */
 }
 
-.notion-page-cover-wrapper {
+/* .notion-page-cover-wrapper {
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
-}
+} */
 
-@media only screen and (max-width: 1200px) {
+/* @media only screen and (max-width: 1200px) {
   .notion-page-cover-wrapper,
   .notion-page-cover-wrapper span,
   .notion-page-cover-wrapper img {
     border-radius: 24px;
   }
-}
+} */
 
 .notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-page-link {
   justify-content: center;
@@ -449,32 +465,23 @@
   display: none;
 }
 
-/* if you don't want rounded page icon images, remove this */
-.notion-page-icon-hero.notion-page-icon-image {
-  border-radius: 50%;
-}
-.notion-page-icon-hero.notion-page-icon-image span,
-.notion-page-icon-hero.notion-page-icon-image img {
-  border-radius: 50%;
-}
-
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
-  backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(7px);
 }
 
 .dark-mode .notion-header {
   background: transparent;
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-  backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(7px);
 }
 
 /* Workaround for Firefox not supporting backdrop-filter yet */
-@-moz-document url-prefix() {
+/* @-moz-document url-prefix() {
   .dark-mode .notion-header {
-    background: hsla(203, 8%, 20%, 0.8);
+    backdrop-filter: saturate(180%) blur(6px);
   }
-}
+} */
 
 .notion-bookmark:hover {
   border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);

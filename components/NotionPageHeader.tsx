@@ -5,7 +5,6 @@ import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import styles from './styles.module.css'
 
-
 export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock
 }> = ({ block }) => {
