@@ -1,11 +1,16 @@
-import { parsePageId } from 'notion-utils'
 import { ExtendedRecordMap } from 'notion-types'
+import { parsePageId } from 'notion-utils'
 
 import * as acl from './acl'
-import { pageUrlOverrides, pageUrlAdditions, environment, site } from './config'
+import { environment, pageUrlAdditions, pageUrlOverrides, site } from './config'
 import { db } from './db'
-import { getPage } from './notion'
 import { getSiteMap } from './get-site-map'
+import { getPage } from './notion'
+
+// import { createWriteStream, existsSync, mkdirSync } from 'fs'
+// import { ReadableStream } from 'stream/web'
+// import { finished } from 'stream/promises'
+// import { Readable } from 'stream'
 
 export async function resolveNotionPage(domain: string, rawPageId?: string) {
   let pageId: string
@@ -81,10 +86,29 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     }
   } else {
     pageId = site.rootNotionPageId
-
-    console.log(site)
     recordMap = await getPage(pageId)
   }
+  
+  // const { signed_urls } = recordMap
+
+  // if(Object.keys(signed_urls).length > 0) {
+  //   for (const blockId in signed_urls) {
+  //     try{
+  //       const signedUrl = signed_urls[blockId]
+  //       const destination = `./images/${blockId}.png`
+
+  //       if (!signedUrl.includes("expirationTimestamp") || existsSync(destination)) continue
+
+  //       const image = await fetch(signedUrl)
+
+  //       recordMap.signed_urls[blockId] = `https://localhost:3000/images:${blockId}.png`
+
+  //       const fileStream = createWriteStream(destination, { flags: 'wx' })
+  //       await finished(Readable.fromWeb(image.body as unknown as ReadableStream).pipe(fileStream))
+
+  //     } catch(error: unknown) {}
+  //   }
+  // }
 
   const props = { site, recordMap, pageId }
   return { ...props, ...(await acl.pageAcl(props)) }

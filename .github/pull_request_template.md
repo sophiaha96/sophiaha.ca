@@ -1,15 +1,7 @@
-#### Description
+## Description
 
-<!--
-Please include as detailed of a description as possible, including screenshots if applicable.
--->
+<!-- Please include as detailed of a description as possible. -->
 
-#### Notion Test Page ID
+## Updates
 
-<!--
-Please include the ID of at least one publicly accessible Notion page related to your PR.
-
-This is extremely helpful for us to debug and fix issues.
-
-Thanks!
--->
+- <!-- List changes here -->
