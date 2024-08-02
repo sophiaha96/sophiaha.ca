@@ -51,7 +51,7 @@ export default async function OGImage(req: NextRequest) {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#1F2027',
+          backgroundColor: '#1a1a1a',
           alignItems: 'center',
           justifyContent: 'center',
           fontFamily: '"Inter", sans-serif',
