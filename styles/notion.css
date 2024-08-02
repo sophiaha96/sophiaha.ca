@@ -8,7 +8,7 @@
  */
 
 * {
-  font-family: 'Italiana', serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family: monospace, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji',
     'Segoe UI Symbol';
 }
@@ -29,6 +29,12 @@
 .notion-page {
   padding-bottom: calc(max(3vh, 32px)) !important;
   line-height: 1.65;
+}
+
+@media only screen and (min-width: 1400px) {
+  .notion-page {
+    width: 70%;
+  }
 }
 
 .index-page {
@@ -53,9 +59,10 @@
 }
 
 .notion-text {
-  font-family: Sorts Mill Goudy, serif;
+  font-family: monospace;
   font-size: 17px;
   padding: 0.5em 2px;
+  padding-right: 2vw;
 }
 
 .notion-asset-caption {
@@ -77,8 +84,8 @@
 }
 
 .notion-header .notion-nav-header {
-  max-width: 1500px;
   margin: 0 0;
+  /* background-coxlor: rgba(0, 0, 0, 0.2); */
 }
 
 .notion-gallery-grid {
@@ -141,7 +148,8 @@
 }
 
 .notion-collection-card-body {
-  padding: 10px;
+  padding-top: 10px;
+  /* background-color: #96b8ec; */
 }
 
 /* only target safari */
@@ -159,7 +167,7 @@
   line-height: 1.5;
   font-style: bold;
   font-size: 20px;
-  border-left: 4px solid #202020;
+  border-left: 4px solid #4a4a4a;
 }
 
 .notion-h1,
@@ -236,8 +244,7 @@
 @media only screen and (max-width: 400px) {
   .notion-gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 10vmin;
-    gap: 10vmin;
+    grid-gap: 3vmin;
   }
   .notion-gallery-grid .notion-page-title-text {
     font-size: 1.2rem;
@@ -302,7 +309,7 @@
 }
 
 .notion-page-has-cover.notion-page-no-icon {
-  padding: 0;
+  padding: 2vw;
 }
 
 .notion-page-cover {
@@ -455,6 +462,20 @@
   );
 }
 
+.dark-mode {
+  background-color: #1a1a1a;
+}
+
+.notion-aside-table-of-contents {
+  /* background-color: #1a1a1a; */
+  border-radius: 2%;
+  padding: 1rem;
+}
+
+.notion-simple-table {
+  margin-right: 2vw;
+}
+
 /* disable highlighting in dark mode */
 .dark-mode .notion-red_background,
 .dark-mode .notion-pink_background,
@@ -468,7 +489,7 @@
   padding: 0;
   margin: 0;
   border-radius: 0;
-  background: none !important;
+  /* background: none !important; */
 }
 
 .notion-page-icon-hero {
